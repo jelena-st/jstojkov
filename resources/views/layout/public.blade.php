@@ -32,24 +32,23 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="./index.html" class="navbar-brand">Mashup Template</a>
+            <a href="./index.html" class="navbar-brand">Imperial Stables</a>
         </div>
 
         <nav class="sidebar">
             <div class="navbar-collapse" id="navbar-collapse">
                 <div class="site-header hidden-xs">
                     <a class="site-brand" href="./index.html" title="">
-                        <img class="img-responsive site-logo" alt="" src="./assets/images/mashup-logo.svg">
-                        Mashup Template
+                        <img class="img-responsive site-logo" alt="" src="{{ asset('images/logo1.png') }}">
+                        Imperial Stables
                     </a>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor.</p>
+                    <p>Where passion for horses meets unmatched quality and care.</p>
                 </div>
                 <ul class="nav">
-                    <li><a href="./index.html" title="">Home</a></li>
-                    <li><a href="./about.html" title="">Horses auction</a></li>
-                    <li><a href="./services.html" title="">Contact us</a></li>
-                    <li><a href="./contact.html" title="">Login</a></li>
+                    <li><a href="{{ route('horse.welcome') }}" title="">Home</a></li>
+                    <li><a href="{{ route('horse.list') }}" title="">Horses auction</a></li>
+                    <li><a href="{{ route('contact') }}" title="">Contact us</a></li>
+                    <li><a href="" title="">Login</a></li>
 
                 </ul>
 

@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="section-container-spacer">
-                <h1>Contact Us</h1>
+                <h2>Contact Us</h2>
             </div>
             <div class="section-container-spacer">
                 <div>
