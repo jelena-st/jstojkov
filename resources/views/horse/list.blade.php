@@ -6,11 +6,6 @@
     <div class="row">
         <div class="col-xs-12 section-container-spacer">
             <h2>Horses Auction</h2>
-            @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
         </div>
         @if (count($horses) > 0)
             @foreach ($horses as $horse)

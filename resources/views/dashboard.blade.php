@@ -1,7 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 3)
+                {{ __('Dashboard') }}
+            @else
+                {{ __('My Bids') }}
+            @endif
         </h2>
     </x-slot>
 

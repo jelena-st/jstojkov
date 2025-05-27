@@ -9,6 +9,16 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    public function bids()
+    {
+        return $this->hasMany(Bid::class);
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
@@ -21,6 +31,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id'
     ];
 
     /**

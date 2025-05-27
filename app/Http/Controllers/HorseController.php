@@ -24,6 +24,13 @@ class HorseController extends Controller
         ]);
     }
 
+    public function adminAll()
+    {
+        return view('admin/horse/horses', [
+            "horses" => Horse::all(),
+        ]);
+    }
+
     public function one($id)
     {
         $horse = Horse::find($id);
@@ -34,7 +41,7 @@ class HorseController extends Controller
 
     public function create()
     {
-        return view('horse/create');
+        return view('admin/horse/create');
     }
 
     public function store(Request $request)
@@ -54,7 +61,7 @@ class HorseController extends Controller
         $horse->image = 'storage/' . $request->file('image')->store('', 'public');
         $horse->save();
 
-        return redirect()->route("horse.list")->with("success", "Horse added successfully!");
+        return redirect()->route("horse.admin.all")->with("success", "Horse added successfully!");
     }
 
     public function edit($id)
@@ -87,6 +94,6 @@ class HorseController extends Controller
     {
         $horse = Horse::find($id);
         $horse->delete();
-        return redirect()->route("horse.list")->with("success", "Horse deleted successfully!");
+        return redirect()->route("horse.admin.all")->with("success", "Horse deleted successfully!");
     }
 }

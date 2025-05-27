@@ -10,4 +10,9 @@ class Bid extends Model
     {
         return $this->belongsTo(Horse::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -17,9 +17,10 @@
 
 
 
-    <title>@yield("title")</title>
+    <title>@yield('title')</title>
 
     @vite('resources/css/main.82cfd66e.css')
+</head>
 
 <body>
 
@@ -32,13 +33,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="./index.html" class="navbar-brand">Imperial Stables</a>
+            <a href="{{ route('horse.welcome') }}" class="navbar-brand">Imperial Stables</a>
         </div>
 
         <nav class="sidebar">
             <div class="navbar-collapse" id="navbar-collapse">
                 <div class="site-header hidden-xs">
-                    <a class="site-brand" href="./index.html" title="">
+                    <a class="site-brand" href="{{ route('horse.welcome') }}" title="">
                         <img class="img-responsive site-logo" alt="" src="{{ asset('images/logo1.png') }}">
                         Imperial Stables
                     </a>
@@ -48,8 +49,28 @@
                     <li><a href="{{ route('horse.welcome') }}" title="">Home</a></li>
                     <li><a href="{{ route('horse.list') }}" title="">Horses auction</a></li>
                     <li><a href="{{ route('contact') }}" title="">Contact us</a></li>
-                    <li><a href="" title="">Login</a></li>
 
+                    @if (Auth::check())
+                        @if (Auth::user()->role_id == 2)
+                            <li><a href="{{ route('dashboard') }}" title="">My Bids</a></li>
+                        @elseif (in_array(Auth::user()->role_id, [1, 3]))
+                            <li><a href="{{ route('dashboard') }}" title="">Dashboard</a></li>
+                        @endif
+                    @endif
+
+                    @if (!Auth::check())
+                        <li><a href="{{ route('login') }}" title="">Login</a></li>
+                        <li><a href="{{ route('register') }}" title="">Register</a></li>
+                    @else
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <x-dropdown-link :href="route('logout')"
+                                onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                            </x-dropdown-link>
+                        </form>
+                    @endif
                 </ul>
 
                 <nav class="nav-footer">
@@ -64,16 +85,16 @@
                             <i class="fa fa-twitter"></i>
                         </a>
                     </p>
-                    <p>© Untitled | Website created with <a href="http://www.mashup-template.com/"
-                            title="Create website with free html template">Mashup Template</a>/<a
-                            href="https://www.unsplash.com/" title="Beautiful Free Images">Unsplash</a></p>
+                    <p>Copyright © 2025 | Website created with <a href="http://www.mashup-template.com/"
+                            title="Create website with free html template">Mashup Template</a><a
+                            href="https://www.unsplash.com/" title="Beautiful Free Images"></a></p>
                 </nav>
             </div>
         </nav>
     </header>
     <main class="" id="main-collapse">
 
-        @yield("content")
+        @yield('content')
 
     </main>
 
