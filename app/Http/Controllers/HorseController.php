@@ -67,7 +67,7 @@ class HorseController extends Controller
     public function edit($id)
     {
         $horse = Horse::find($id);
-        return view('horse/edit', [
+        return view('admin/horse/edit', [
             "horse" => $horse,
         ]);
     }
@@ -85,9 +85,11 @@ class HorseController extends Controller
         $horse->price = $request->price;
         $horse->gender = $request->gender;
         $horse->featured = $request->featured ? 1 : 0;
-        $horse->image = 'storage/' . $request->file('image')->store('', 'public');
+        if ($request->hasFile('image')) {
+            $horse->image = 'storage/' . $request->file('image')->store('', 'public');
+        }
         $horse->save();
-        return redirect()->route("horse.list")->with("success", "Horse edited successfully!");
+        return redirect()->route("horse.admin.all")->with("success", "Horse edited successfully!");
     }
 
     public function delete($id)

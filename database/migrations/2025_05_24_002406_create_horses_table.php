@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('age');
             $table->string('breed', 50);
             $table->integer('gender');
-            $table->integer('price');
+            $table->float('price');
             $table->text('description');
             $table->string('image');
             $table->integer('featured');

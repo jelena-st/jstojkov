@@ -31,6 +31,12 @@
                             {{ __('Bids') }}
                         </x-nav-link>
                     </div>
+
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('user.admin.all')" :active="request()->routeIs('user.admin.all')" style="color: inherit; text-decoration: none;">
+                            {{ __('Users') }}
+                        </x-nav-link>
+                    </div>
                 @endif
             </div>
 

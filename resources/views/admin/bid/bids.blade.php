@@ -31,11 +31,13 @@
                                 <td>{{ $bid->id }}</td>
                                 <td>{{ $bid->horse->name }}</td>
                                 <td>{{ $bid->user->name }}</td>
-                                <td>{{ $bid->amount }}</td>
+                                <td>{{ $bid->amount }}$</td>
                                 <td>{{ $bid->created_at->format('Y-m-d H:i:s') }}</td>
                                 <td>{{ $bid->updated_at->format('Y-m-d H:i:s') }}</td>
-                                <td><a href="" class="btn btn-primary">Edit</a></td>
-                                <td><a href="" class="btn btn-danger">Delete</a></td>
+                                <td><a href="{{ route('bid.admin.edit', $bid->id) }}" class="btn btn-primary">Edit</a>
+                                </td>
+                                <td><a href="{{ route('bid.admin.delete', $bid->id) }}"
+                                        class="btn btn-danger">Delete</a></td>
                             </tr>
                         @endforeach
                         @if ($bids->isEmpty())

@@ -40,7 +40,7 @@
                                 <td>{{ $horse->age }}</td>
                                 <td>{{ $horse->breed }}</td>
                                 <td>{{ $horse->gender }}</td>
-                                <td>{{ $horse->price }}</td>
+                                <td>{{ $horse->price }}$</td>
                                 <td>{{ $horse->description }}</td>
                                 <td>
                                     <img src="{{ asset($horse->image) }}" alt="horse"
@@ -49,7 +49,7 @@
                                 <td>{{ $horse->featured ? 'Yes' : 'No' }}</td>
                                 <td>{{ $horse->created_at->format('Y-m-d H:i:s') }}</td>
                                 <td>{{ $horse->updated_at->format('Y-m-d H:i:s') }}</td>
-                                <td><a href=""
+                                <td><a href="{{ route('horse.admin.edit', $horse->id) }}"
                                         class="btn btn-primary">Edit</a></td>
                                 <td><a href="{{ route('horse.admin.delete', $horse->id) }}" class="btn btn-danger">Delete</a></td>
                             </tr>
